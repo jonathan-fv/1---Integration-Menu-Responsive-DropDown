@@ -2,6 +2,7 @@
 
 * {
 	margin: 0px; padding: 0px;
+	user-select: none;
 	box-sizing: border-box;
 	font-family: 'Poppins', sans-serif;
 }
@@ -22,7 +23,7 @@ nav .logo{
 	font-size: 27px;
 	font-weight: 600;
 	line-height: 70px;
-	padding-left: 70px;
+	padding-left: 60px;
 }
 nav ul{
 	float: right;
@@ -49,7 +50,6 @@ nav ul li a:hover{
 	box-shadow: 0 0 5px #33ffff, 0 0 5px #66ffff;
 }
 nav ul ul li a:hover{
-	color: #00ffff;
 	box-shadow: none;
 }
 nav ul ul{
@@ -81,7 +81,7 @@ nav ul ul li a{
 }
 nav ul ul ul li{
 	position: relative;
-	top: -70px;
+	top: -60px;
 	left: 150px;
 }
 .fa-plus{
@@ -90,6 +90,23 @@ nav ul ul ul li{
 }
 .show, .icon, input{
 	display: none;
+}
+.content{
+	z-index: -1;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	text-align: center;
+}
+header{
+	font-size: 35px;
+	font-weight: 600;
+	padding: 10px 0;
+}
+p{
+	font-size: 30px;
+	font-weight: 500;
 }
 
 /* Responsive CSS */
@@ -102,30 +119,15 @@ nav ul ul ul li{
 		padding-left: 30px;
 		width: 100%;
 	}
-	nav ul li, nav ul ul li{
+	.show + a, ul{
+		display: none;
+	}
+	nav ul li,nav ul ul li{
 		display: block;
 		width: 100%;
 	}
-	nav ul ul{
-		top: 70px;
-		position: static;
-		border-top: none;
-		float: none;
-		display: none;
-		opacity: 1;
-		visibility: visible;
-	}
-	nav ul ul ul li{
-		position: static;
-	}
-	nav ul ul li {
-		border-bottom: 0;
-	}
-	nav ul ul a{
-		padding-left: 40px;
-	}
-	nav ul ul ul a{
-		padding-left: 80px;
+	nav ul li a:hover{
+		box-shadow: none;
 	}
 	.show{
 		display: block;
@@ -142,18 +144,37 @@ nav ul ul ul li{
 		display: block;
 		color: #fff;
 		position: absolute;
+		top: 0;
 		right: 40px;
 		line-height: 70px;
 		font-size: 25px;
 		cursor: pointer;
 	}
-	nav ul li a:hover{
-		box-shadow: none;
-	}
-	.show + a, ul{
+	nav ul ul{
+		top: 70px;
+		border-top: 0;
+		position: static;
+		float: none;
 		display: none;
+		opacity: 1;
+		visibility: visible;
+	}
+	nav ul ul a{
+		padding-left: 40px;
+	}
+	nav ul ul ul a{
+		padding-left: 80px;
+	}
+	nav ul ul ul li{
+		position: static;
 	}
 	[id^=btn]:checked + ul{
 		display: block;
+	}
+	nav ul ul li {
+		border-bottom: 0;
+	}
+	span.cancel:before{
+		content: '\f00d';
 	}
 }
